@@ -1,6 +1,6 @@
 # SentinelaRisk - IA para Servicio al Cliente
 
-![SentinelaRisk IA](ia.png)
+![SentinelaRisk IA](/imagenes/ia.png)
 
 ## Descripción
 
