@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agente IA - SentinelaRISK</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1f32bd",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0A0C10",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans transition-colors duration-200">
+<nav class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center space-x-12">
+<div class="flex-shrink-0 flex items-center">
+<span class="text-2xl font-bold tracking-tighter brand-logo">SentinelaRisk</span>
+</div>
+<div class="hidden md:flex items-center space-x-10">
+
+
+   <!--  Boton de INICIO -->
+
+<a class="text-sm font-bold text-green-600 dark:text-gray-300 hover:text-primary dark:hover:text-black transition-colors" href="/index.html"> INICIO </a>
+
+
+<a class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors" href="#">Sobre nosotros</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<a class="text-sm font-semibold text-gray-900 dark:text-white px-4" href="#">Iniciar sesión</a>
+<a class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 transition-all transform active:scale-95" href="#">Empezar gratis</a>
+</div>
+</div>
+</div>
+</nav>
+
+
+
+    <script>
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1f32bd",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0A0C10",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        xl: "1rem",
+                        "2xl": "1.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="metrica.css">
+
+<body class="bg-background-light dark:bg-background-dark font-sans transition-colors duration-200">
+
+
+
+
+
+
+<!--     Cuadro de metricas -->
+
+<div class="container">
+    <h1>Agente de Salud del Cliente (IA)</h1>
+    <p class="subtitle">Simulador de detección temprana de riesgo corporativo</p>
+
+    <div class="dashboard">
+        <div class="metrics-input">
+            <h3>Métricas Operativas</h3>
+            <div class="control-group">
+                <label>Nivel de Servicio (SLA): <span id="val-sla">90</span>%</label>
+                <input type="range" id="sla" min="70" max="100" value="90">
+            </div>
+            <div class="control-group">
+                <label>Puntualidad: <span id="val-punt">90</span>%</label>
+                <input type="range" id="punt" min="70" max="100" value="90">
+            </div>
+            
+            <h3>Métricas de Experiencia</h3>
+            <div class="control-group">
+                <label>NPS: <span id="val-nps">8</span></label>
+                <input type="range" id="nps" min="0" max="10" value="8">
+            </div>
+            <div class="control-group">
+                <label>Quejas Abiertas: <span id="val-quejas">0</span></label>
+                <input type="range" id="quejas" min="0" max="5" value="0">
+            </div>
+        </div>
+
+        <div class="status-display">
+            <h3>Estado del Cliente</h3>
+            <div id="health-circle">0.0</div>
+            <div id="status-label" class="badge">Analizando...</div>
+            
+            <div class="recommendation-box" id="rec-box">
+                <strong>Diagnóstico IA:</strong>
+                <p id="ia-diagnosis">Mueva los controles para calcular el riesgo.</p>
+                <strong>Acción Sugerida:</strong>
+                <p id="ia-action">Esperando datos...</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Prototipo de Retención Predictiva - Modelo Agente SentinelaRISK
+    </footer>
+</div>
+
+<script>
+    const inputs = document.querySelectorAll('input[type="range"]');
+    
+    function updateHealth() {
+        // 1. Obtener valores
+        const sla = parseFloat(document.getElementById('sla').value);
+        const punt = parseFloat(document.getElementById('punt').value);
+        const nps = parseFloat(document.getElementById('nps').value);
+        const quejas = parseFloat(document.getElementById('quejas').value);
+
+        // Actualizar etiquetas de texto
+        document.getElementById('val-sla').innerText = sla;
+        document.getElementById('val-punt').innerText = punt;
+        document.getElementById('val-nps').innerText = nps;
+        document.getElementById('val-quejas').innerText = quejas;
+
+        // 2. Normalizar a escala 1-10 para el cálculo
+        // Simplificación: (valor - min) / (max - min) * 10
+        const nSla = ((sla - 70) / 30) * 10;
+        const nPunt = ((punt - 70) / 30) * 10;
+        const nNps = nps;
+        const nQuejas = (5 - quejas) * 2; // Menos quejas es mejor puntaje
+
+        // 3. Aplicar Matriz de Pesos (35%, 25%, 20%, 20%)
+        const score = (nSla * 0.35) + (nPunt * 0.25) + (nNps * 0.20) + (nQuejas * 0.20);
+        const finalScore = score.toFixed(1);
+
+        // 4. Actualizar Interfaz
+        const circle = document.getElementById('health-circle');
+        const label = document.getElementById('status-label');
+        const diagnosis = document.getElementById('ia-diagnosis');
+        const action = document.getElementById('ia-action');
+        const recBox = document.getElementById('rec-box');
+
+        circle.innerText = finalScore;
+
+        if (score >= 8.5) {
+            circle.style.backgroundColor = 'var(--green)';
+            label.innerText = 'Saludable';
+            label.style.backgroundColor = 'var(--green)';
+            diagnosis.innerText = 'El cliente muestra alta fidelidad y estabilidad operativa.';
+            action.innerText = 'Mantener programa de lealtad y solicitar testimonio (Case Study).';
+            recBox.style.borderColor = 'var(--green)';
+        } else if (score >= 6.5) {
+            circle.style.backgroundColor = 'var(--yellow)';
+            label.innerText = 'Riesgo Moderado';
+            label.style.backgroundColor = 'var(--yellow)';
+            diagnosis.innerText = 'Se detectan desviaciones leves en métricas operativas que podrían afectar la percepción futura.';
+            action.innerText = 'Llamada proactiva del KAM para revisar los retrasos detectados.';
+            recBox.style.borderColor = 'var(--yellow)';
+        } else {
+            circle.style.backgroundColor = 'var(--red)';
+            label.innerText = 'Riesgo Crítico';
+            label.style.backgroundColor = 'var(--red)';
+            diagnosis.innerText = 'Deterioro grave del servicio o múltiples quejas. Alta probabilidad de churn.';
+            action.innerText = 'Plan de rescate inmediato: Visita presencial de Gerencia y bonificación por incumplimiento.';
+            recBox.style.borderColor = 'var(--red)';
+        }
+    }
+
+    inputs.forEach(input => input.addEventListener('input', updateHealth));
+    updateHealth(); // Inicializar
+</script>
+
+</body>
+</html>
